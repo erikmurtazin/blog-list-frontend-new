@@ -3,13 +3,13 @@ import Login from '../features/auth/Login';
 import BlogList from '../pages/BlogList';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../features/user/userSlice';
+import Create from '../features/createBlog/Create';
 
 export const AppRoutes = () => {
   const dispatch = useDispatch();
   const user = {
     id: useSelector(state => state.userReducer),
   };
-  console.log(user);
   const logout = () => {
     localStorage.removeItem('access_token');
     dispatch(logoutUser());
@@ -30,6 +30,7 @@ export const AppRoutes = () => {
       <Routes>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/' element={<BlogList />}></Route>
+        <Route path='/create' element={<Create />}></Route>
       </Routes>
     </>
   );
